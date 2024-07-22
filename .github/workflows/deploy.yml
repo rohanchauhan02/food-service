@@ -1,0 +1,68 @@
+name: Deploy to Cloud Run
+
+on:
+  push:
+    branches: [ "dev" ]
+
+env:
+    PROJECT_ID: v3-89transfers
+    GAR_LOCATION: europe-west3
+    REGISTRY: backend
+    SERVICE: dev-food-service
+    # CREDENTIALS_JSON: "{\n  \"type\": \"service_account\",\n  \"project_id\": \"v3-89transfers\",\n  \"private_key_id\": \"31a72145ef4cb369c2f4fa336e22bd24ec0c3343\",\n  \"private_key\": \"-----BEGIN PRIVATE KEY-----\\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDQ6RAJkJ1EQDkC\\nwEYQLRSB1Dle2QORUKHUpeL6AaSsMLClxL6kyQ4VeXEr8PxOXPnx8xdR9z50lYK+\\nRKb8elVjWSWxlV1m08iOXpIKDz0ruEqJFETuKcU4SwIUK3O0kMWH52u+qQ3ybuD7\\nLF4A1NJh8j/4KjnGfAcrF/VU8bVDwrdJpCpl+MKD3bIDM7GJxnuJK6ScZ82jHoCP\\nZ2HmoeQh9x/LhxdDewAB4rUwusddfvFqut5BSsADIuL+vfM0/3BQ55htWVt3P67A\\nPIdpgJcUWIlMTHTmhm3hfPk4M1qqGMABzw779bC9NOWvMvI1MaYKXtzOnJh7mS4J\\nkOHfqNdBAgMBAAECggEAEXsvKF29izSEkMJeGoRrLuH/Wvx12/cPU6f98kWo7e+1\\nGGn6OffJAesDmVW1BymokKJy1R0HUOIh6qH8ByyFcKbJDK8e/bfDFIa9WbIkwD/P\\nnODhU7yTED7WkbGBIR7sKI8o6O9kh2DX2qy/wPoOELwgtjdyVjWSs/xxPwZq0JyX\\nzG7Uq0gLwqIJik7H+Hz16U1f5UeSvN6uFROuwp72FpPAcR06P2mZHLsOT2jAy50w\\nL7RGSX6MiT/8XB4MYW181nYRgWs4Iie4J/hBhY7nFQwxyKPmx19pyB1ktId4cwdJ\\nsf3dIQceiFEWAi4cswLvx5iEd4VZ0Z//bmaRqqnesQKBgQD1Vn1Ay1web0/VwcUw\\njJhJx8Ps9ssXx/J0vb7x7qm+f+JCg4q6p6xMuyfn1qNMdsTCXGaeQaLUhGOOYpGr\\n8XKtWlgzhHEpX/k0VO9ZXH5xK7QUOQrzJFGLk0DCZvJqs9o1vXkLw7bzfRO7lLHC\\n+AfgV3sqUNcvygs6aZXrbW79dwKBgQDZ/UyUW9bB1MwIHq+QhXI8qqh0fR4cKSgs\\ngdgPUwLB2aPBO2W0VunAPQMcCOj5225h/YCY++Hlh3/E07RgrtRbtOJNODs3QUuZ\\nPkgRlXwMtAUMeGHWYQHarAJ6UnWMUiAR9M/MX9G2XjXISzv2PD8dhy6SL6KdlaXN\\nm5efMCWfBwKBgQCDzCXXlCf1tai21bTgQvdg029esqoiKWkH7BNTFvqbe0oKn238\\nni0Cv5xNgNITNs629zqtk+cssb5l9G/7ZedMV3eAnYrJRmSzB1nZsMXAeFDyeD54\\npi8kg0PL69AZIGt+aT5I4qg7IBtkrxnb+rEIhRaGgg1IAAuOIsDGS/DPOwKBgQCT\\nLmP7M3rvylasENPnF0LHVU6BwEyJJPy7+DtCNYECE4luGUWVGq2en1MvJZDvyklg\\nHgIqyL5/9Bm/clUyhjhZZur4ykOpDgwV/qg4Px7PkOhrwAgG796Jn2PY5T36rSR8\\nGzgGPJfisv9LKgjlO04+CJzYFRONpJGbHjekQqTUFwKBgQCP+j+oQw9SX8c2YjGO\\nTUt+FYxmKQDiEnsNYh32gK/BgWzNqMnmzerZIW61Fr6pvXeQVtFiMnM4ohsyQB/k\\n90lOL+09k+8jtserEIXh5aGIZe0E/slHbLo0Snjb8Yt19P75vfcavWVHLA3q9zT2\\ni4N9zlXYQdbWSmsR0jL2MBphig==\\n-----END PRIVATE KEY-----\\n\",\n  \"client_email\": \"payload-cms-service@v3-89transfers.iam.gserviceaccount.com\",\n  \"client_id\": \"105863009056607542135\",\n  \"auth_uri\": \"https://accounts.google.com/o/oauth2/auth\",\n  \"token_uri\": \"https://oauth2.googleapis.com/token\",\n  \"auth_provider_x509_cert_url\": \"https://www.googleapis.com/oauth2/v1/certs\",\n  \"client_x509_cert_url\": \"https://www.googleapis.com/robot/v1/metadata/x509/payload-cms-service%40v3-89transfers.iam.gserviceaccount.com\",\n  \"universe_domain\": \"googleapis.com\"\n}"
+
+jobs:
+  deploy:
+    # Add 'id-token' with the intended permissions for workload identity federation
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      # NOTE: Alternative option - authentication via credentials json
+      - name: Google Auth
+        id: auth
+        uses: 'google-github-actions/auth@v2'
+        with:
+          credentials_json: ${{ env.CREDENTIALS_JSON }}
+          token_format: "access_token"
+
+      # BEGIN - Docker auth and build (NOTE: If you already have a container image, these Docker steps can be omitted)
+      - name: Debug Output
+        id: debug
+        run: |
+          echo "Access Token: ${{ steps.auth.outputs.access_token }}"
+          echo "ID Token: ${{ steps.auth.outputs.id_token }}"
+          echo "Project ID: ${{ env.PROJECT_ID }}"
+          echo "Service: ${{ env.SERVICE }}"
+
+      # Authenticate Docker to Google Cloud Artifact Registry
+      - name: Docker Auth
+        id: docker-auth
+        uses: "docker/login-action@v1"
+        with:
+          username: "oauth2accesstoken"
+          password: "${{ steps.auth.outputs.access_token }}"
+          registry: "${{ env.GAR_LOCATION }}-docker.pkg.dev"
+
+      - name: Build and Push Container
+        run: |-
+          docker build -t "${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REGISTRY }}/${{ env.SERVICE }}:${{ github.sha }}" ./
+          docker push "${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REGISTRY }}/${{ env.SERVICE }}:${{ github.sha }}"
+
+      # END - Docker auth and build
+      - name: Deploy to Cloud Run
+        id: deploy
+        uses: google-github-actions/deploy-cloudrun@v1
+        with:
+          service: ${{ env.SERVICE }}
+          region: ${{ env.GAR_LOCATION }}
+          image: ${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REGISTRY }}/${{ env.SERVICE }}:${{ github.sha }}
+
+      # If required, use the Cloud Run url output in later steps
+      - name: Show Output
+        run: echo ${{ steps.deploy.outputs.url }}
