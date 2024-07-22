@@ -5,11 +5,24 @@ on:
     branches: [ "dev" ]
 
 env:
-    PROJECT_ID: v3-89transfers
-    GAR_LOCATION: europe-west3
-    REGISTRY: backend
-    SERVICE: dev-food-service
-    # CREDENTIALS_JSON: "{\n  \"type\": \"service_account\",\n  \"project_id\": \"v3-89transfers\",\n  \"private_key_id\": \"31a72145ef4cb369c2f4fa336e22bd24ec0c3343\",\n  \"private_key\": \"-----BEGIN PRIVATE KEY-----\\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDQ6RAJkJ1EQDkC\\nwEYQLRSB1Dle2QORUKHUpeL6AaSsMLClxL6kyQ4VeXEr8PxOXPnx8xdR9z50lYK+\\nRKb8elVjWSWxlV1m08iOXpIKDz0ruEqJFETuKcU4SwIUK3O0kMWH52u+qQ3ybuD7\\nLF4A1NJh8j/4KjnGfAcrF/VU8bVDwrdJpCpl+MKD3bIDM7GJxnuJK6ScZ82jHoCP\\nZ2HmoeQh9x/LhxdDewAB4rUwusddfvFqut5BSsADIuL+vfM0/3BQ55htWVt3P67A\\nPIdpgJcUWIlMTHTmhm3hfPk4M1qqGMABzw779bC9NOWvMvI1MaYKXtzOnJh7mS4J\\nkOHfqNdBAgMBAAECggEAEXsvKF29izSEkMJeGoRrLuH/Wvx12/cPU6f98kWo7e+1\\nGGn6OffJAesDmVW1BymokKJy1R0HUOIh6qH8ByyFcKbJDK8e/bfDFIa9WbIkwD/P\\nnODhU7yTED7WkbGBIR7sKI8o6O9kh2DX2qy/wPoOELwgtjdyVjWSs/xxPwZq0JyX\\nzG7Uq0gLwqIJik7H+Hz16U1f5UeSvN6uFROuwp72FpPAcR06P2mZHLsOT2jAy50w\\nL7RGSX6MiT/8XB4MYW181nYRgWs4Iie4J/hBhY7nFQwxyKPmx19pyB1ktId4cwdJ\\nsf3dIQceiFEWAi4cswLvx5iEd4VZ0Z//bmaRqqnesQKBgQD1Vn1Ay1web0/VwcUw\\njJhJx8Ps9ssXx/J0vb7x7qm+f+JCg4q6p6xMuyfn1qNMdsTCXGaeQaLUhGOOYpGr\\n8XKtWlgzhHEpX/k0VO9ZXH5xK7QUOQrzJFGLk0DCZvJqs9o1vXkLw7bzfRO7lLHC\\n+AfgV3sqUNcvygs6aZXrbW79dwKBgQDZ/UyUW9bB1MwIHq+QhXI8qqh0fR4cKSgs\\ngdgPUwLB2aPBO2W0VunAPQMcCOj5225h/YCY++Hlh3/E07RgrtRbtOJNODs3QUuZ\\nPkgRlXwMtAUMeGHWYQHarAJ6UnWMUiAR9M/MX9G2XjXISzv2PD8dhy6SL6KdlaXN\\nm5efMCWfBwKBgQCDzCXXlCf1tai21bTgQvdg029esqoiKWkH7BNTFvqbe0oKn238\\nni0Cv5xNgNITNs629zqtk+cssb5l9G/7ZedMV3eAnYrJRmSzB1nZsMXAeFDyeD54\\npi8kg0PL69AZIGt+aT5I4qg7IBtkrxnb+rEIhRaGgg1IAAuOIsDGS/DPOwKBgQCT\\nLmP7M3rvylasENPnF0LHVU6BwEyJJPy7+DtCNYECE4luGUWVGq2en1MvJZDvyklg\\nHgIqyL5/9Bm/clUyhjhZZur4ykOpDgwV/qg4Px7PkOhrwAgG796Jn2PY5T36rSR8\\nGzgGPJfisv9LKgjlO04+CJzYFRONpJGbHjekQqTUFwKBgQCP+j+oQw9SX8c2YjGO\\nTUt+FYxmKQDiEnsNYh32gK/BgWzNqMnmzerZIW61Fr6pvXeQVtFiMnM4ohsyQB/k\\n90lOL+09k+8jtserEIXh5aGIZe0E/slHbLo0Snjb8Yt19P75vfcavWVHLA3q9zT2\\ni4N9zlXYQdbWSmsR0jL2MBphig==\\n-----END PRIVATE KEY-----\\n\",\n  \"client_email\": \"payload-cms-service@v3-89transfers.iam.gserviceaccount.com\",\n  \"client_id\": \"105863009056607542135\",\n  \"auth_uri\": \"https://accounts.google.com/o/oauth2/auth\",\n  \"token_uri\": \"https://oauth2.googleapis.com/token\",\n  \"auth_provider_x509_cert_url\": \"https://www.googleapis.com/oauth2/v1/certs\",\n  \"client_x509_cert_url\": \"https://www.googleapis.com/robot/v1/metadata/x509/payload-cms-service%40v3-89transfers.iam.gserviceaccount.com\",\n  \"universe_domain\": \"googleapis.com\"\n}"
+  PROJECT_ID: backend
+  GAR_LOCATION: asia-southeast1
+  REGISTRY: backend
+  SERVICE: dev-food-service
+  CREDENTIALS_JSON: |
+    {
+      "type": "service_account",
+      "project_id": "backend-430218",
+      "private_key_id": "dcc13792668dbc6225e5321f0eb58f7ebf97fb76",
+      "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCmu7SE5xfei0vX\nI8zyJnBevbNVDwPylHUoO/TjiKr8N2Fat36VzRxrCdPiqvIzQ03BC7tbiEJNJ2oP\nA1I04H7AMoiaS+8lBAqpkWDJKkkDy3u01ysE20TXEtR7cpboIvMjFCw/RWvHIrsd\ni/Cj5EFLUVKRZhfUHvRQ5i1N2UFwn/B3ll//wMEeE+Q9t0T12qup/se5XE3Qzj4U\nhXUkBkZK547DVmXSJj+DQQsQe7yCEGpZFFYkwg9skGPStS/SG0YzigykSBM5AkG1\nZj4/qd08AZ9MZw2WpBCVughceEOTD4AnIJQ8TxuvBgfNzIG7TUTpo8uEI9dSK6It\n7Mnrw1edAgMBAAECggEAGJwpb68nLXNPZRilA4j7mmr9sVcKCiAyOsIUH2boy1mR\nRnFB1J1LIzF205olLb6IF4UXySbk7REdl8xcXJmrm8rZsYyhESGg6+5yuWlDEGBU\niMN0V2nV+2ONdrsvMwxq6YlCDq9nJ87PN56UN7H/6+dmUeJz2fIdCw6D2V3Gnvd/\nDgxHd45CZQESCLKm/3r9D1j7YOj37/5ANU5DQ5ECp7ShlBKrHHWrmj5IUQJKh/8V\n0xf97E0mxPMF5W9+XKfVjfsx7d6QFfQUI37PtIoQTXnCjEh2T/Kw7KKhQxZmOvAR\nFuN7RMT9H83brW7qDqI9yeejf6y9p7J2UrcddquZsQKBgQDrqsgsumVpIArrCTKd\nlDj/L0zqRLSMvdyyOe98nBDNe+6rETcuCoW1CFf+xXmx5zxdtJ+F4YIRBiDWHjXZ\nEwdcJBugBmZqEAsGa5d/3mYe7bInrrG5gOQ/OZ6ZTnbZn1VauuON6hZvz2yO9qVp\nOgW4HHgYSHkmVNpP5p5ez1LLRwKBgQC1Hl563uA26d2Y3OKFzZ/uMMmBTyMXdsfD\nKKTGn6DnMw/uuL/Kc5cnOQ1TKoLY96iHYUtTV6t22KT4yTV0jyL1TcMK4bAsYAHw\nPwmxRU57u7+R/b9sEY8Zm6tHqlTdnpd+nkJCsFuN7g7z79HSqxXkM3ZdDCpbMpiv\n02yeVZwv+wKBgE+dNlrF7ZSCGq4kQVEyzb6HwDg0VbpmObSMFffG0XZZs9teyYFo\nVJs/4lpTZDVRpPcTGgEkmcgeheFP+2kGIKpkGGELSHX0TYUxu9Ca1W0FZ/Y38hp1\nDKa/VHD+LPB//1nTYSSEPGgxbr8tW9wcmeoE1B1//k2QxN/RTRdCevnpAoGAdqwQ\nYde496IilS9dqShC+zGyRmzQ5GXqm9/8nzwmlHZroRIicIduab/DEFQRahJTtWi1\nj0UpTvTCm1RTFy1WTX6HJpEb+udpPb5AHov30bEB46lsjGWw6qmJ/6oGczOftdIC\nPmoJgySRXZosVCnPbTee/XakJh8v1jzktZYIgZMCgYByqwDFvPpPp1z4pMjznH6C\naWtrmj2rvGN9q+vPGCu2+9U7Ke3Cs4Yr+/KHggh8S5Y+vPcbAErjaORmoKQi1lkt\nvi7fRNB/ceNQ3XhOlt4CK+9SfI0YEqStWB/gCNzwLL7h47jRg01mepNsRZCvY2Kf\n7Ov6nReSNIR5dzvCyfc59A==\n-----END PRIVATE KEY-----\n",
+      "client_email": "backend-services@backend-430218.iam.gserviceaccount.com",
+      "client_id": "101721740090668398400",
+      "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+      "token_uri": "https://oauth2.googleapis.com/token",
+      "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+      "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/backend-services%40backend-430218.iam.gserviceaccount.com",
+      "universe_domain": "googleapis.com"
+    }
 
 jobs:
   deploy:
